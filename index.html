@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Home - Food</title>
+</head>
+
+<body>
+
+    <div id="navbar"></div>
+
+
+    <div class="container">
+
+        <div class="illustration">
+            <img src="/images/chef-g3a62acdc5_1280.png">
+        </div>
+
+        <div id="search_area">
+            <div>
+                <input type="text" id="query" placeholder="Search Recipe">
+                <div id="search_result"></div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script type="module">
+
+    import navbar from './components/navbar.js';
+    import { getData, appendSearch, searchRecipe, searchDebouncing, showNotFound } from './scripts/showData.js';
+
+    let nav_container = document.getElementById("navbar");
+    nav_container.innerHTML = navbar();
+
+    let query_input = document.getElementById("query");
+    // let search_result_area = document.getElementById("search_result");
+
+    query_input.addEventListener("input", searchDebouncing);
+    query_input.addEventListener("blur", removeSearchResult);
+
+    function removeSearchResult(){
+        document.getElementById("search_result").style.display = "none";
+    }
+
+
+</script>
+
+
+</html>
+
