@@ -14,6 +14,10 @@
 
 <body>
     <div id="navbar"></div>
+    <div class="container">
+        <div id="categories"></div>
+
+    </div>
 
 
 </body>
@@ -24,6 +28,8 @@
 
     import navbar from './components/navbar.js'
 
+    import { getData } from './scripts/showData.js';
+
     function setNavbar() {
         let nav_container = document.getElementById("navbar");
         nav_container.innerHTML = navbar();
@@ -31,5 +37,35 @@
     }
 
     setNavbar();
+
+    let data = getData("https://www.themealdb.com/api/json/v1/1/categories.php");
+
+    data.then((res) => {
+        console.log(res);
+        appendCategories(res.categories);
+    })
+
+    function appendCategories(category) {
+        let categories = document.getElementById("categories");
+
+        category.forEach(e => {
+            let div = document.createElement("div");
+            div.className = "category-box";
+
+            let h2 = document.createElement("h2");
+            h2.innerText = e.strCategory;
+
+            let img = document.createElement("img");
+            img.src = e.strCategoryThumb;
+
+            let description = document.createElement("p");
+            description.innerText = e.strCategoryDescription;
+
+            div.append(h2, img, description);
+
+            categories.append(div);
+        });
+
+    }
 
 </script>

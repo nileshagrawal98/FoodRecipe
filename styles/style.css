@@ -104,6 +104,7 @@ body {
     padding: 10px;
     background-color: #9CCC65;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 #search_result_div  p {
@@ -120,4 +121,25 @@ body {
 
 #search_result_div > div:nth-of-type(2) {
     width: 70%;
+}
+
+.category-box{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #C5E1A5;
+    padding: 1rem;
+    border: 1px solid #558B2F;
+}
+
+.category-box > h2{
+    color: #558B2F;
+    font-size: 1.65rem;
+}
+
+.category-box > p{
+    color: #162410;
+    font-size: 1rem;
+    line-height: 1.5rem;
 }

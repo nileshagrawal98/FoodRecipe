@@ -16,29 +16,6 @@
 <body>
     <div id="navbar"></div>
 
-    <div class="container">
-        <h1 id="recipe_name"></h1>
-        <div id="info"></div>
-        <div id="visual">
-            <div id="video"></div>
-        </div>
-        <div id="ingredients_area">
-            <div>
-                <h2>Ingredients</h2>
-                <ul id="ingredients"></ul>
-            </div>
-            <div>
-                <img id="mealImg">
-            </div>
-        </div>
-        <div id="instructions">
-            <h2>Instructions</h2>
-        </div>
-        <div id="tag-container">
-            <h4>Tags</h4>
-            <div id="tags"></div>
-        </div>
-    </div>
 </body>
 
 </html>
@@ -46,7 +23,7 @@
 <script type="module">
 
     import navbar from './components/navbar.js'
-    import { getData } from './scripts/showData.js';
+    import { getData , appendRecipe, addTagInfo, setRecipeLayout} from './scripts/showData.js';
 
 
     let nav_container = document.getElementById("navbar");
@@ -56,89 +33,93 @@
 
     data.then((res) => {
         console.log(res);
+        let div = document.createElement("div");
+        div.innerHTML = setRecipeLayout();
+        document.body.append(div);
         appendRecipe(res.meals[0]);
     })
 
-    async function appendRecipe(recipe) {
+    // async function appendRecipe(recipe) {
 
-        let ingredients = document.getElementById("ingredients");
+    //     let ingredients = document.getElementById("ingredients");
 
-        document.getElementById("recipe_name").innerText = recipe.strMeal;
+    //     document.getElementById("recipe_name").innerText = recipe.strMeal;
 
-        document.getElementById("mealImg").src = recipe.strMealThumb;
+    //     document.getElementById("mealImg").src = recipe.strMealThumb;
 
-        for (let i = 0; i < 20; i++) {
+    //     for (let i = 0; i < 20; i++) {
 
-            let ingredient = recipe["strIngredient" + (i + 1)];
+    //         let ingredient = recipe["strIngredient" + (i + 1)];
 
-            if (ingredient !== "" && ingredient !== null) {
-                // console.log(ingredient);
+    //         if (ingredient !== "" && ingredient !== null) {
+    //             // console.log(ingredient);
 
-                let measure = recipe["strMeasure" + (i + 1)];
+    //             let measure = recipe["strMeasure" + (i + 1)];
 
-                let li = document.createElement("li");
+    //             let li = document.createElement("li");
 
-                li.innerText = ingredient + " - " + measure;
+    //             li.innerText = ingredient + " - " + measure;
 
-                ingredients.append(li);
-            }
-        }
+    //             ingredients.append(li);
+    //         }
+    //     }
 
-        let instructions = document.createElement("ol");
+    //     let instructions = document.createElement("ol");
 
-        let instruction = recipe.strInstructions.split("\r\n");
+    //     let instruction = recipe.strInstructions.split("\r\n");
 
-        instruction.forEach(el => {
-            let li = document.createElement("li");
-            li.innerText = el;
-            // console.log(el);
-            if (el !== "") {
-                instructions.append(li);
+    //     instruction.forEach(el => {
+    //         let li = document.createElement("li");
+    //         li.innerText = el;
+    //         // console.log(el);
+    //         if (el !== "") {
+    //             instructions.append(li);
 
-            }
-        })
+    //         }
+    //     })
 
 
         // console.log(instructions);
-        document.getElementById("instructions").append(instructions);
+    //     document.getElementById("instructions").append(instructions);
 
-        let video_id = recipe.strYoutube.split("v=");
+    //     let video_id = recipe.strYoutube.split("v=");
 
-        let video = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${video_id[1]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    //     let video = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${video_id[1]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
 
-        document.getElementById("video").innerHTML = video;
+    //     document.getElementById("video").innerHTML = video;
 
-        addTagInfo(recipe);
-    }
+    //     addTagInfo(recipe);
+    // }
 
-    function addTagInfo(recipe) {
-        let tags = document.getElementById("tags");
+    // function addTagInfo(recipe) {
+    //     let tags = document.getElementById("tags");
 
-        if (recipe.strTags == "" || recipe.strTags == null) {
-            document.getElementById("tag-container").style.display = "none";
-        } else {
-            let tag = recipe.strTags.split(",");
+    //     if (recipe.strTags == "" || recipe.strTags == null) {
+    //         document.getElementById("tag-container").style.display = "none";
+    //     } else {
+    //         let tag = recipe.strTags.split(",");
 
-            tag.forEach(e => {
-                let span = document.createElement("span");
+    //         tag.forEach(e => {
+    //             if (e !== "") {
+    //                 let span = document.createElement("span");
 
-                span.innerText = e;
+    //                 span.innerText = e;
 
-                tags.append(span);
-            });
-        }
+    //                 tags.append(span);
+    //             }
 
-        let info = document.getElementById("info");
+    //         });
+    //     }
 
-        let category = document.createElement("span");
-        category.innerText = "Category: " +  recipe.strCategory;
+    //     let info = document.getElementById("info");
 
-        let area = document.createElement("span");
-        area.innerText = "Area: " + recipe.strArea;
+    //     let category = document.createElement("span");
+    //     category.innerText = "Category: " + recipe.strCategory;
 
-        info.append(category, area);
-    }
+    //     let area = document.createElement("span");
+    //     area.innerText = "Area: " + recipe.strArea;
 
-
+    //     info.append(category, area);
+    // }
 
 </script>

@@ -43,13 +43,15 @@
     nav_container.innerHTML = navbar();
 
     let query_input = document.getElementById("query");
-    // let search_result_area = document.getElementById("search_result");
 
     query_input.addEventListener("input", searchDebouncing);
     query_input.addEventListener("blur", removeSearchResult);
 
     function removeSearchResult(){
-        document.getElementById("search_result").style.display = "none";
+        setTimeout(function(){
+            document.getElementById("search_result").style.display = "none";
+        }, 300);
+        
     }
 
 
