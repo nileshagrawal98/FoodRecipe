@@ -57,6 +57,8 @@ body {
 .nav-container {
     max-width: 1200px;
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .nav-option {

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/recipeStyle.css">
-    <title>Recipe of Day</title>
+    <title id="page_title">Recipe</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
 
 <script type="module">
 
-    import navbar from './components/navbar.js'
+    import {navbar, setPageIcon} from './components/navbar.js'
     import { getData, appendRecipe, addTagInfo, setRecipeLayout } from './scripts/showData.js';
 
 
@@ -38,7 +38,10 @@
         div.innerHTML = setRecipeLayout();
         document.body.append(div);
         appendRecipe(res.meals[0]);
+        document.getElementById("page_title").innerText = res.meals[0].strMeal;
     })
+
+    setPageIcon();
 
 
 

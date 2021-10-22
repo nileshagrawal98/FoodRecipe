@@ -36,7 +36,7 @@
 
 <script type="module">
 
-    import navbar from './components/navbar.js';
+    import {navbar, setPageIcon} from './components/navbar.js';
     import { getData, appendSearch, searchRecipe, searchDebouncing, showNotFound } from './scripts/showData.js';
 
     let nav_container = document.getElementById("navbar");
@@ -53,6 +53,8 @@
         }, 300);
         
     }
+
+    setPageIcon();
 
 
 </script>

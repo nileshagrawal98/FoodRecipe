@@ -22,7 +22,7 @@
 
 <script type="module">
 
-    import navbar from './components/navbar.js'
+    import {navbar, setPageIcon} from './components/navbar.js'
     import { getData , appendRecipe, addTagInfo, setRecipeLayout} from './scripts/showData.js';
 
 
@@ -39,87 +39,7 @@
         appendRecipe(res.meals[0]);
     })
 
-    // async function appendRecipe(recipe) {
+    setPageIcon();
 
-    //     let ingredients = document.getElementById("ingredients");
-
-    //     document.getElementById("recipe_name").innerText = recipe.strMeal;
-
-    //     document.getElementById("mealImg").src = recipe.strMealThumb;
-
-    //     for (let i = 0; i < 20; i++) {
-
-    //         let ingredient = recipe["strIngredient" + (i + 1)];
-
-    //         if (ingredient !== "" && ingredient !== null) {
-    //             // console.log(ingredient);
-
-    //             let measure = recipe["strMeasure" + (i + 1)];
-
-    //             let li = document.createElement("li");
-
-    //             li.innerText = ingredient + " - " + measure;
-
-    //             ingredients.append(li);
-    //         }
-    //     }
-
-    //     let instructions = document.createElement("ol");
-
-    //     let instruction = recipe.strInstructions.split("\r\n");
-
-    //     instruction.forEach(el => {
-    //         let li = document.createElement("li");
-    //         li.innerText = el;
-    //         // console.log(el);
-    //         if (el !== "") {
-    //             instructions.append(li);
-
-    //         }
-    //     })
-
-
-        // console.log(instructions);
-    //     document.getElementById("instructions").append(instructions);
-
-    //     let video_id = recipe.strYoutube.split("v=");
-
-    //     let video = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${video_id[1]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
-
-    //     document.getElementById("video").innerHTML = video;
-
-    //     addTagInfo(recipe);
-    // }
-
-    // function addTagInfo(recipe) {
-    //     let tags = document.getElementById("tags");
-
-    //     if (recipe.strTags == "" || recipe.strTags == null) {
-    //         document.getElementById("tag-container").style.display = "none";
-    //     } else {
-    //         let tag = recipe.strTags.split(",");
-
-    //         tag.forEach(e => {
-    //             if (e !== "") {
-    //                 let span = document.createElement("span");
-
-    //                 span.innerText = e;
-
-    //                 tags.append(span);
-    //             }
-
-    //         });
-    //     }
-
-    //     let info = document.getElementById("info");
-
-    //     let category = document.createElement("span");
-    //     category.innerText = "Category: " + recipe.strCategory;
-
-    //     let area = document.createElement("span");
-    //     area.innerText = "Area: " + recipe.strArea;
-
-    //     info.append(category, area);
-    // }
 
 </script>
