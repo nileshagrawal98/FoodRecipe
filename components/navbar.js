@@ -1,6 +1,6 @@
 function navbar() {
     return `<nav class="nav-container">
-    <img src="https://img.icons8.com/ios/30/000000/cookbook.png" />
+    <img src="https://img.icons8.com/ios-filled/30/ffffff/cookbook.png" />
     <a href="index.html" class="nav-option">Home</a>
     <a href="recipeOfDay.html" class="nav-option">Recipe of Day</a>
     <a href="latest.html" class="nav-option">Latest Recipe</a>
